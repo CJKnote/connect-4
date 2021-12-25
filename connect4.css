@@ -36,3 +36,12 @@
 .winSquare {
   background-color : yellow;
 }
+
+.playerDisplay{
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+  width: 50%;
+  margin: auto;
+  background-color: lightgrey;
+}

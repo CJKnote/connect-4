@@ -32,7 +32,6 @@ function makeBoard() {
 function makeHtmlBoard() {
   //get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.querySelector("#board");
-  // TODO: add comment for this code
 
   //creates the top row of the board which handles the clicks
   const top = document.createElement("tr");
@@ -127,7 +126,6 @@ function handleClick(evt) {
   }
 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame 
   if(board.every(row => row.every(cell => cell !== null))){
     return endGame("Tie!");
   }
@@ -135,6 +133,8 @@ function handleClick(evt) {
 
   // switch players
   currPlayer = currPlayer === 1 ? 2 : 1;
+  const playerDisplay = document.querySelector("#playerCount");
+  playerDisplay.innerText = `Player ${currPlayer}'s Turn`;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -155,7 +155,6 @@ function checkForWin() {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
 
   //loops through square
   for (let y = 0; y < HEIGHT; y++) {
