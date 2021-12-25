@@ -107,7 +107,7 @@ function handleClick(evt) {
   if(gameOver){
     return endGame('Game is done.');
   }
-  
+
   // get x from ID of clicked cell
   let x = +evt.target.id;
 
@@ -134,12 +134,7 @@ function handleClick(evt) {
     
 
   // switch players
-  if(currPlayer === 1){
-    currPlayer = 2;
-  }
-  else{
-    currPlayer = 1;
-  }
+  currPlayer = currPlayer === 1 ? 2 : 1;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
