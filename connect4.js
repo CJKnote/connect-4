@@ -123,7 +123,11 @@ function handleClick(evt) {
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
   //NOT SURE IF THIS WILL WORK!! TEST!
-  //if(board.every !== null){endGame();}
+  
+  if(board.every(row => row.every(cell => cell !== null))){
+    return endGame("Tie!");
+  }
+    
 
   // switch players
   if(currPlayer === 1){
