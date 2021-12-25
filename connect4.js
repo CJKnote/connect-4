@@ -70,6 +70,22 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+
+  //make the piece and add the classes for whose turn
+  const piece = document.createElement("div");
+  piece.classList.add("piece");
+  if(currPlayer === 1){
+    piece.classList.add("p1");
+  }
+  else{
+    piece.classList.add("p2");
+  }
+
+  const spot = document.getElementById(`${y}-${x}`);
+  spot.appendChild(piece);
+
+
+
 }
 
 /** endGame: announce game end */
