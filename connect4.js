@@ -62,15 +62,18 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 0
-  return 0;
+  for (let y = HEIGHT-1; y >= 0; y--){
+    if(board[y][x] === null){
+      return y;
+    }
+  }
+
+  //handle error for if the row is full.
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 function placeInTable(y, x) {
-  // TODO: make a div and insert into correct table cell
-
   //make the piece and add the classes for whose turn
   const piece = document.createElement("div");
   piece.classList.add("piece");
@@ -81,17 +84,18 @@ function placeInTable(y, x) {
     piece.classList.add("p2");
   }
 
+  //finding the board spot and adding the piece to it
   const spot = document.getElementById(`${y}-${x}`);
   spot.appendChild(piece);
-
-
-
 }
 
 /** endGame: announce game end */
 
 function endGame(msg) {
   // TODO: pop up alert message
+  alert(msg);
+
+  //should not allow play to continue after win.
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -109,6 +113,7 @@ function handleClick(evt) {
   // place piece in board and add to HTML table
   // TODO: add line to update in-memory board
   placeInTable(y, x);
+  board[y][x] = currPlayer;
 
   // check for win
   if (checkForWin()) {
@@ -117,9 +122,16 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
+  //NOT SURE IF THIS WILL WORK!! TEST!
+  //if(board.every !== null){endGame();}
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  if(currPlayer === 1){
+    currPlayer = 2;
+  }
+  else{
+    currPlayer = 1;
+  }
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
