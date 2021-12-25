@@ -9,26 +9,36 @@ let WIDTH = 7;
 let HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-const board = []; // array of rows, each row is array of cells  (board[y][x])
+let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  //dynamically create board based on HEIGHT and WIDTH constants
+  for (let i = 0; i<HEIGHT; i++){
+    var row =[];
+    for (let j=0; j<WIDTH; j++){
+      row.push(null);
+    }
+    board.push(row);
+  }
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
-  // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-
+  //get "htmlBoard" variable from the item in HTML w/ID of "board"
+  const htmlBoard = document.querySelector("#board");
   // TODO: add comment for this code
+
+  //creates the top row of the board which handles the clicks
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
+  //adding cells for the top row
   for (let x = 0; x < WIDTH; x++) {
     const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
@@ -36,11 +46,12 @@ function makeHtmlBoard() {
   }
   htmlBoard.append(top);
 
-  // TODO: add comment for this code
+  // creating the html cells for the rest of the board
   for (let y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
     for (let x = 0; x < WIDTH; x++) {
       const cell = document.createElement("td");
+      //setting a coordinate id to each cell
       cell.setAttribute("id", `${y}-${x}`);
       row.append(cell);
     }
